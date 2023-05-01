@@ -4,22 +4,27 @@ import PieChart from 'react-minimal-pie-chart';
 const Chart = (props) => {
     // create variable "over" with all the cars whose horsepower is >= 200
     // create variable "under" with all the cars whose horsepower is < 200
+    let over = props.cars.filter((car) => car.horsepower >= 200)
+    let under = props.cars.filter((cars) => cars.horsepower < 200)
+
+    console.log(props.cars.horsepower);
 
     return (
-        <div>
-            <PieChart style={{ width: '200px' }}
-                data={[
-                    { title: 'Over', value: 10, color: '#C13C37' },
-                    { title: 'Under', value: 15, color: '#E38627' },
-                ]}
-                label
-                labelStyle={{
-                    fill: 'white',
-                    fontSize: 'small'
-                }}
-            />
-            <Legend />
-        </div>
+      <div>
+        <PieChart
+          style={{ width: "200px" }}
+          data={[
+            { title: "Over", value: over.length, color: "#C13C37" },
+            { title: "Under", value: under.length, color: "#E38627" },
+          ]}
+          label
+          labelStyle={{
+            fill: "white",
+            fontSize: "small",
+          }}
+        />
+        <Legend />
+      </div>
     )
 }
 
